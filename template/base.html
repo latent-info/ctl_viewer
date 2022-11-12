@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="language" content="en">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="theme-color" content="#2e2e33">
+        <meta name="msapplication-TileColor" content="#2e2e33">
+        <link rel="stylesheet" href="{css_path}">
+        <title>CTL Viewer</title>
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <div class="logo">
+                    <a href="https://adityatelange.github.io/hugo-PaperMod/" accesskey="h" title="CTL Viewer">CTL Viewer</a>
+                    <div class="logo-switches">
+                        <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                            <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                            <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <ul id="menu">
+                    <li>
+                        <a href="../index.html" title="BYBIT">
+                            {tab_bybit}BYBIT</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./ftx/index.html" title="FTX">
+                            {tab_ftx}FTX</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main"> 
+            <article class="first-entry home-info">
+                <header class="entry-header">
+                    <h1>{trading_type}</h1>
+                </header>
+
+                <span id="datetime">_________________________________ {datetime_now}</span>
+
+                <div class="entry-content">
+                    <ul>
+                    <h2>🌟 Balance $ {usdt_balance:.2f}</h2>
+                    <li>&nbsp;&bull; Value $ {usdt_value:.2f} | PnL $ {usdt_pnl:.2f}</li>
+                    <li>&nbsp;&bull; Free $ {usdt_free:.2f} ({usdt_free_prop:.1%}) | Used $ {usdt_used:.2f}</li>
+                    </ul>
+                    <div class="blank">{balance_plot1}</div>
+                    {balance_plot_script1}
+                </div>
+            </article>
+
+            <article class="first-entry home-info">
+                <div class="entry-content">
+                    <h2>Positions ({usdt_alive_cnt})</h2>
+                    <dt>&nbsp;&bull; Long: {usdt_long_cnt} ({usdt_long_prop:.1%}) | Short: {usdt_short_cnt} ({usdt_short_prop:.1%}) | Pass: {usdt_pass_cnt}</dt>
+                    <dt>&nbsp;&bull; Stand-by({usdt_standby_cnt}): {usdt_standby_markets}</dt>
+                    {cautious_mode}
+                </div>
+                <table class="position">
+                    <th>Market</th><th>Side</th><th>Start</th><th>Cautious</th><th>Amt(%)</th><th>PnL(%)</th>
+                    {tbl_html_text}
+                </table>
+            </article>
+
+            <article class="first-entry home-info">
+                <div class="entry-content">
+                    <h2>Trading Records</h2>
+                    <dt>&nbsp;&bull; Win rate(5 days): {win_rate}</dt>
+                    {record_status}
+                    <div class="blank">{balance_plot2}</div>
+                    {balance_plot_script2}
+                </div>
+            </article>
+
+            <article class="first-entry home-info">
+                <div class="entry-content">
+                    <h2>Logs</h2>
+                </div>
+                <div class="post-entry">
+                    {log_text}
+                </div>
+            </article>
+        </main>
+    </body>
+</html>
+
+<!-- 
+<footer class="entry-footer"><span title='2021-01-20 00:00:00 +0000 UTC'>January 20, 2021</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Aditya Telange</footer>
+-->
